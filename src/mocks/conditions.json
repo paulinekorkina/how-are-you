@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "date": "2024-01-13T11:40:01.000Z",
+    "mood": 3,
+    "energy": 3,
+    "occasions": [1],
+    "emotions": [2, 3],
+    "note": null
+  },
+  {
+    "id": 2,
+    "date": "2024-01-14T12:30:01.000Z",
+    "mood": 2,
+    "energy": 1,
+    "occasions": null,
+    "emotions": null,
+    "note": null
+  },
+  {
+    "id": 3,
+    "date": "2024-01-15T16:00:01.000Z",
+    "mood": 3,
+    "energy": 2,
+    "occasions": [2, 3, 4],
+    "emotions": [4],
+    "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+  },
+  {
+    "id": 4,
+    "date": "2024-01-17T11:40:01.000Z",
+    "mood": 4,
+    "energy": 3,
+    "occasions": [1],
+    "emotions": [2, 3],
+    "note": null
+  }
+]
