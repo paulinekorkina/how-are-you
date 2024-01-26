@@ -13,9 +13,10 @@ const useConditionsStore = defineStore('conditions', {
       const emotionsData = useEmotionsStore();
 
       return state.conditions.map((condition) => {
-        const occasions = occasionsData.occasions.filter((i) => condition.occasions.includes(i.id));
+        const occasions = occasionsData.occasions
+          .filter((i) => condition.occasions?.includes(i.id));
 
-        const emotions = emotionsData.emotions.filter((i) => condition.emotions.includes(i.id));
+        const emotions = emotionsData.emotions.filter((i) => condition.emotions?.includes(i.id));
 
         return {
           ...condition,
