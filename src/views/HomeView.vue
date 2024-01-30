@@ -1,16 +1,15 @@
 <template>
-  <div>
-    <div class="grid">
-      <div
-        class="col-12 md:col-6 lg:col-3 flex"
-        v-for="condition in conditionsStore.conditionsExtended"
-        :key="condition.id"
-      >
-        <condition-card
-          class="col-12 shadow-2 p-3 border-round"
-          :condition="condition" />
-      </div>
-    </div>
+  <div class="grid">
+    <router-link
+      :to="{ name: 'condition', params: { id: condition.id }}"
+      class="col-12 md:col-6 lg:col-3 flex"
+      v-for="condition in conditionsStore.conditionsExtended"
+      :key="condition.id"
+    >
+      <condition-card
+        class="col-12 shadow-2 p-3 border-round"
+        :condition="condition" />
+    </router-link>
   </div>
 </template>
 

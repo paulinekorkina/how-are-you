@@ -28,4 +28,8 @@ const EnergyName = {
   6: 'ядерный реактор',
 };
 
-export { MoodClass, MoodName, EnergyName };
+const MAX_NOTE_LENGTH = 120;
+
+export {
+  MoodClass, MoodName, EnergyName, MAX_NOTE_LENGTH,
+};

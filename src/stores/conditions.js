@@ -2,6 +2,8 @@ import { defineStore } from 'pinia';
 import conditionsJSON from '@/mocks/conditions.json';
 import useOccasionsStore from '@/stores/occasions';
 import useEmotionsStore from '@/stores/emotions';
+import { sortByDate } from '@/common/helpers';
+import { MAX_NOTE_LENGTH } from '@/common/const';
 
 const useConditionsStore = defineStore('conditions', {
   state: () => ({
@@ -12,18 +14,23 @@ const useConditionsStore = defineStore('conditions', {
       const occasionsData = useOccasionsStore();
       const emotionsData = useEmotionsStore();
 
-      return state.conditions.map((condition) => {
-        const occasions = occasionsData.occasions
-          .filter((i) => condition.occasions?.includes(i.id));
+      return state.conditions
+        .sort(sortByDate)
+        .map((condition) => {
+          const occasions = occasionsData.occasions
+            .filter((i) => condition.occasions?.includes(i.id));
 
-        const emotions = emotionsData.emotions.filter((i) => condition.emotions?.includes(i.id));
+          const emotions = emotionsData.emotions.filter((i) => condition.emotions?.includes(i.id));
 
-        return {
-          ...condition,
-          occasions,
-          emotions,
-        };
-      });
+          const trimmedNote = condition.note && condition.note.length > MAX_NOTE_LENGTH ? `${condition.note.substring(0, MAX_NOTE_LENGTH)}…` : condition.note;
+
+          return {
+            ...condition,
+            occasions,
+            emotions,
+            trimmedNote,
+          };
+        });
     },
   },
   actions: {

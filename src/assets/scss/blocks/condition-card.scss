@@ -1,0 +1,30 @@
+.p-button {
+  display: none;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+
+:deep(.p-chip .p-chip-text) {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.p-divider.p-divider-horizontal {
+  margin: 1rem 0;
+}
+
+.condition-card {
+  position: relative;
+  &:hover {
+    .p-button {
+      display: inline-flex;
+    }
+  }
+
+  &-badge {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+  }
+}

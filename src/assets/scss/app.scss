@@ -1,0 +1,32 @@
+@import "@/assets/scss/libs/normalize.scss";
+@import "@/assets/scss/scaffolding.scss";
+@import '@/assets/scss/layout/container.scss';
+@import '@/assets/scss/layout/header.scss';
+
+.awful {
+  background-color: #592763;
+}
+
+.bad {
+  background-color: #9d1a70;
+}
+
+.meh {
+  background-color: #e73c3c;
+}
+
+.normal {
+  background-color: #ff9cab;
+}
+
+.good {
+  background-color: #8baffb;
+}
+
+.excellent {
+  background-color: #53d8dd;
+}
+
+.wonderful {
+  background-color: #4df358;
+}

@@ -26,4 +26,10 @@ function capitalizeFirstLetter(str) {
   return str.substring(0, 1).toUpperCase() + str.substring(1);
 }
 
-export { humanizeShortDate, humanizeFullDate, capitalizeFirstLetter };
+function sortByDate(conditionA, conditionB) {
+  return dayjs(conditionB.date).diff(dayjs(conditionA.date));
+}
+
+export {
+  humanizeShortDate, humanizeFullDate, capitalizeFirstLetter, sortByDate,
+};
