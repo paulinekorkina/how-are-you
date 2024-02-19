@@ -7,6 +7,11 @@ export default [
   {
     path: '/condition/:id',
     name: 'condition',
-    component: () => import('@/views/ConditionView.vue'),
+    component: () => import('@/views/ConditionEdit.vue'),
+  },
+  {
+    path: '/condition/create',
+    name: 'condition-create',
+    component: () => import('@/views/ConditionCreate.vue'),
   },
 ];

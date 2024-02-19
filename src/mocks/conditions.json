@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "date": "2024-01-23T11:40:01.000Z",
     "mood": 3,
     "energy": 3,
@@ -9,7 +9,7 @@
     "note": null
   },
   {
-    "id": 2,
+    "id": "2",
     "date": "2024-01-24T12:30:01.000Z",
     "mood": 2,
     "energy": 1,
@@ -18,7 +18,7 @@
     "note": null
   },
   {
-    "id": 3,
+    "id": "3",
     "date": "2024-01-25T16:00:01.000Z",
     "mood": 3,
     "energy": 2,
@@ -27,7 +27,7 @@
     "note": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
   },
   {
-    "id": 4,
+    "id": "4",
     "date": "2024-01-26T11:40:01.000Z",
     "mood": 4,
     "energy": 3,

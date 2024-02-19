@@ -32,6 +32,7 @@ const useConditionsStore = defineStore('conditions', {
           };
         });
     },
+    getConditionById: (state) => (id) => state.conditions.find((i) => (i.id === id)),
   },
   actions: {
     addCondition(condition) {
