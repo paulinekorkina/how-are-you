@@ -62,5 +62,5 @@ defineProps({
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/blocks/condition-card.scss'
+@import '@/assets/scss/blocks/condition-card.scss';
 </style>
