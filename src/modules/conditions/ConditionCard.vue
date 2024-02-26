@@ -1,6 +1,11 @@
 <template>
   <div class="condition-card">
-    <Button icon="pi pi-trash" severity="secondary" text size="small"/>
+    <Button
+      @click.stop.prevent="deleteCondition"
+      icon="pi pi-trash"
+      severity="secondary"
+      text size="small"
+    />
 
     <div
       class="condition-card-header flex flex-column pl-2"
@@ -30,7 +35,7 @@
       >{{ occasion.icon }} {{ occasion.name }}</span>
     </div>
 
-    <Divider v-if="condition.emotions.length"/>
+    <Divider v-if="condition.occasions.length && condition.emotions.length"/>
 
     <div v-if="condition.emotions.length" class="flex flex-wrap gap-2">
       <span
@@ -48,17 +53,24 @@
 </template>
 
 <script setup>
+import useConditionsStore from '@/stores/conditions';
 import Divider from 'primevue/divider';
 import Button from 'primevue/button';
 import { humanizeFullDate, capitalizeFirstLetter } from '@/common/helpers';
 import { MoodClass, MoodName, EnergyName } from '@/common/const';
 
-defineProps({
+const props = defineProps({
   condition: {
     type: Object,
     required: true,
   },
 });
+
+const conditionsStore = useConditionsStore();
+
+function deleteCondition() {
+  conditionsStore.deleteCondition(props.condition.id);
+}
 </script>
 
 <style lang="scss" scoped>
