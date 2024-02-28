@@ -1,6 +1,6 @@
 <template>
   <div>
-    Create Condition
+    <h1>Новое состояние</h1>
     <condition-card-creator />
   </div>
 </template>

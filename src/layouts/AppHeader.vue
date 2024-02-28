@@ -3,7 +3,7 @@
     <router-link :to="{name: 'home'}">
       <Button label="История состояний" icon="pi pi-calendar" outlined />
     </router-link>
-    <router-link :to="{name: 'home'}">
+    <router-link :to="{name: 'charts-and-reports'}">
         <Button label="Графики и отчеты" icon="pi pi-chart-bar" outlined />
     </router-link>
     <router-link :to="{name: 'condition-create'}" class="lg:ml-auto">

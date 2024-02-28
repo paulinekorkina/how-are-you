@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="submit" class="pt-5">
+  <form @submit.prevent="submit" class="pt-3">
     <div class="mb-4">
       <condition-card-creator-date-selector v-model="condition.date" />
     </div>

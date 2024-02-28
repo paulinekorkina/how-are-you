@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@vitejs/plugin-vue": "^5.0.3",
+    "chart.js": "^4.4.1",
+    "chartjs-adapter-dayjs-4": "^1.0.4",
     "dayjs": "^1.11.10",
     "lodash": "^4.17.21",
     "pinia": "^2.1.7",

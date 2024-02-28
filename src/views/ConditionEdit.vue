@@ -1,5 +1,5 @@
 <template>
-  Edit Condition id {{ id }}
+  <h1>Изменить состояние</h1>
   <condition-card-creator :condition-to-edit="condition" />
 </template>
 
@@ -12,7 +12,6 @@ const route = useRoute();
 const router = useRouter();
 const conditionsStore = useConditionsStore();
 
-const { id } = route.params;
 const condition = conditionsStore.getConditionById(route.params.id);
 
 if (!condition) {
