@@ -1,33 +1,40 @@
 <template>
-  <div class="text-color-secondary">
+  <div class="report-cell text-color-secondary">
     {{ humanizeShortDate(condition.date) }}
   </div>
   <div
-    class="report-card-mood ml-3 pl-1"
+    class="report-cell report-mood pl-2"
     :class="MoodClass[condition.mood]"
   >{{ capitalizeFirstLetter(MoodName[condition.mood]) }}</div>
-  <span @click="deleteCondition" class="pi pi-trash ml-auto text-color-secondary"></span>
+  <div
+    class="report-cell"
+  >{{ capitalizeFirstLetter(EnergyName[condition.energy]) }}</div>
+  <div class="report-cell">
+    <span
+      v-for="occasion in condition.occasions"
+      :key="occasion.id"
+    >{{ occasion.icon }}</span>
+  </div>
+  <div class="report-cell">
+    <span
+      v-for="emotion in condition.emotions"
+      :key="emotion.id"
+    >{{ emotion.icon }}</span>
+  </div>
 </template>
 
 <script setup>
-import useConditionsStore from '@/stores/conditions';
 import { humanizeShortDate, capitalizeFirstLetter } from '@/common/helpers';
 import { MoodClass, MoodName, EnergyName } from '@/common/const';
 
-const props = defineProps({
+defineProps({
   condition: {
     type: Object,
     required: true,
   },
 });
-
-const conditionsStore = useConditionsStore();
-
-function deleteCondition() {
-  conditionsStore.deleteCondition(props.condition.id);
-}
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/blocks/report-card.scss';
+@import '@/assets/scss/blocks/report-block.scss';
 </style>

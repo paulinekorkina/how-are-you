@@ -1,7 +1,7 @@
 <template>
   <router-link
     :to="{ name: 'condition', params: { id: condition.id }}"
-    class="col-12 shadow-2 mb-2 p-3 border-round flex"
+    class="report-card shadow-2 mb-2 p-3 border-round flex-wrap col-12 gap-2"
     v-for="condition in conditionsStore.conditionsExtended"
     :key="condition.id"
   >
@@ -15,3 +15,7 @@ import ReportBlockCard from './ReportBlockCard.vue';
 
 const conditionsStore = useConditionsStore();
 </script>
+
+<style lang="scss" scoped>
+@import '@/assets/scss/blocks/report-block.scss';
+</style>

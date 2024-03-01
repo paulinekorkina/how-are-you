@@ -1,0 +1,38 @@
+@import "@/assets/scss/variables.scss";
+
+.report {
+  &-block {
+    @media (min-width: 768px) {
+      display: table;
+      border-collapse: separate;
+      border-spacing: 0 0.75rem;
+    }
+  }
+
+  &-card {
+    display: flex;
+
+    @media (min-width: 768px) {
+      display: table-row;
+      border-collapse: separate;
+      border-spacing: 1rem 1rem;
+    }
+  }
+
+  &-cell {
+    @media (min-width: 768px) {
+      display: table-cell;
+      padding: 0.75rem 0.5rem;
+    }
+  }
+
+  &-mood {
+    border-left: 5px solid;
+  }
+}
+
+@each $color in map-keys($colors) {
+  .#{$color} {
+    border-left-color: map-get($colors, $color);
+  }
+}
