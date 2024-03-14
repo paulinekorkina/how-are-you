@@ -1,0 +1,7 @@
+.occasion-edit-icon {
+  display: none;
+
+  .p-multiselect-item:hover & {
+    display: inline-block;
+  }
+}

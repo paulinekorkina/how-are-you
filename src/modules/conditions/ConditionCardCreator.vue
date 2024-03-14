@@ -46,7 +46,7 @@ import { cloneDeep } from 'lodash';
 import Button from 'primevue/button';
 import ConditionCardCreatorDateSelector from '@/modules/conditions/ConditionCardCreatorDateSelector.vue';
 import useConditionsStore from '@/stores/conditions';
-import ConditionCardCreatorMoodSelector from '@/modules/conditions/CoditionCardCreatorMoodSelector.vue';
+import ConditionCardCreatorMoodSelector from '@/modules/conditions/ConditionCardCreatorMoodSelector.vue';
 import ConditionCardCreatorEnergySelector from '@/modules/conditions/ConditionCardCreatorEnergySelector.vue';
 import ConditionCardCreatorOccasionsSelector from '@/modules/conditions/ConditionCardCreatorOccasionsSelector.vue';
 import ConditionCardCreatorEmotionsSelector from '@/modules/conditions/ConditionCardCreatorEmotionsSelector.vue';

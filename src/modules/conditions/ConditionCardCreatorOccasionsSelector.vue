@@ -12,6 +12,19 @@
     >
       <template #option="slotProps">
         {{ slotProps.option.icon }} {{ slotProps.option.name }}
+        <span
+          @click.stop.prevent="editOccasion(slotProps.option)"
+          class="occasion-edit-icon pi pi-pencil ml-auto"
+        ></span>
+      </template>
+      <template #footer>
+        <div class="py-2 px-3">
+          <Button
+            @click="addOccasion"
+            label="Создать событие"
+            link
+          />
+        </div>
       </template>
     </MultiSelect>
     <div v-if="occasionsSelected?.length" class="flex flex-wrap gap-2 mt-3">
@@ -23,14 +36,18 @@
         @remove="removeOccasion(occasion.id)"
       />
     </div>
+
+    <occasion-creator :occasion-to-edit="occasionToEdit" v-model="visible" />
   </div>
 </template>
 
 <script setup>
-import { computed } from 'vue';
+import { ref, computed } from 'vue';
 import Chip from 'primevue/chip';
+import Button from 'primevue/button';
 import useOccasionsStore from '@/stores/occasions';
 import MultiSelect from 'primevue/multiselect';
+import OccasionCreator from '@/modules/occasions/OccasionCreator.vue';
 
 const props = defineProps({
   modelValue: {
@@ -52,7 +69,24 @@ const occasionsSelected = computed({
   },
 });
 
+const visible = ref(false);
+const occasionToEdit = ref(null);
+
 function removeOccasion(occasionId) {
   occasionsSelected.value = occasionsSelected.value.filter(({ id }) => id !== occasionId);
 }
+
+function editOccasion(occasion) {
+  occasionToEdit.value = { ...occasion };
+  visible.value = true;
+}
+
+function addOccasion() {
+  occasionToEdit.value = null;
+  visible.value = true;
+}
 </script>
+
+<style lang="scss" scoped>
+@import '@/assets/scss/blocks/occasions-selector.scss';
+</style>
