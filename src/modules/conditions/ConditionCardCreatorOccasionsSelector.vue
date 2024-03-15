@@ -69,7 +69,7 @@ const occasionsSelected = computed({
   },
 });
 
-const visible = ref(false);
+const visible = ref(true);
 const occasionToEdit = ref(null);
 
 function removeOccasion(occasionId) {
