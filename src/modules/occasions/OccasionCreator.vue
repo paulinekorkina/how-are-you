@@ -6,11 +6,16 @@
           <label for="name" class="font-semibold w-6rem">Название</label>
           <InputText v-model="occasion.name" id="name" class="flex-auto" autocomplete="off" />
         </div>
-        <div class="flex align-items-center gap-3 mb-5">
-          <label for="icon" class="font-semibold w-6rem">Иконка</label>
-          <InputText v-model="occasion.icon" id="icon" class="flex-auto" autocomplete="off" />
+        <div class="occasion-creator-icon flex align-items-center gap-3 mb-5">
+          <label class="font-semibold w-6rem">Иконка</label>
+          <div class="flex-auto">{{ occasion.icon }}</div>
         </div>
-        <div class="flex justify-content-end gap-2">
+        <EmojiPicker
+          :native="true"
+          @select="onSelectEmoji"
+          :display-recent="true"
+        />
+        <div class="flex justify-content-end gap-2 mt-5">
           <Button
             type="button"
             label="Отмена"
@@ -27,11 +32,11 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-import { cloneDeep } from 'lodash';
 import useOccasionsStore from '@/stores/occasions';
 import Dialog from 'primevue/dialog';
 import Button from 'primevue/button';
 import InputText from 'primevue/inputtext';
+import EmojiPicker from 'vue3-emoji-picker';
 
 const props = defineProps({
   occasionToEdit: {
@@ -63,12 +68,19 @@ const createNewOccasion = () => ({
   icon: '',
 });
 
-const occasionToWork = computed(() => (props.occasionToEdit ? cloneDeep(props.occasionToEdit)
+const occasionToWork = computed(() => (props.occasionToEdit ? { ...props.occasionToEdit }
   : createNewOccasion()));
 
-const occasion = ref(occasionToWork);
+const occasion = ref(occasionToWork.value);
 
 const modalHeader = computed(() => (props.occasionToEdit ? 'Редактировать событие' : 'Новое событие'));
+
+function onSelectEmoji(emoji) {
+  occasion.value = {
+    ...occasion.value,
+    icon: emoji.i,
+  };
+}
 
 async function submit() {
   if (props.occasionToEdit) {
@@ -82,3 +94,8 @@ async function submit() {
   visible.value = false;
 }
 </script>
+
+<style lang="scss">
+@import 'vue3-emoji-picker/css';
+@import '@/assets/scss/blocks/occasion-creator.scss';
+</style>
