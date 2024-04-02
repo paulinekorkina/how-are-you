@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Dialog v-model:visible="visible" modal :header="modalHeader" :style="{ width: '25rem' }">
+    <Dialog v-model:visible="visible" modal :header="modalHeader">
       <form @submit.prevent="submit">
         <div class="flex align-items-center gap-3 mb-3">
           <label for="name" class="font-semibold w-6rem">Название</label>
@@ -68,18 +68,16 @@ const createNewOccasion = () => ({
   icon: '',
 });
 
-const occasionToWork = computed(() => (props.occasionToEdit ? { ...props.occasionToEdit }
+const occasionToWork = computed(() => (props.occasionToEdit
+  ? { ...props.occasionToEdit }
   : createNewOccasion()));
 
-const occasion = ref(occasionToWork.value);
+const occasion = ref(occasionToWork);
 
 const modalHeader = computed(() => (props.occasionToEdit ? 'Редактировать событие' : 'Новое событие'));
 
 function onSelectEmoji(emoji) {
-  occasion.value = {
-    ...occasion.value,
-    icon: emoji.i,
-  };
+  occasion.value.icon = emoji.i;
 }
 
 async function submit() {
