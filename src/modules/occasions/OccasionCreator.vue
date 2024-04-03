@@ -29,7 +29,6 @@
   </div>
 
 </template>
-
 <script setup>
 import { ref, computed } from 'vue';
 import useOccasionsStore from '@/stores/occasions';
@@ -62,15 +61,16 @@ const visible = computed({
 
 const occasionsStore = useOccasionsStore();
 
-const createNewOccasion = () => ({
+const createNewOccasion = ref({
   id: crypto.randomUUID(),
   name: '',
   icon: '',
-});
+}); // А зачем тут тогда была функция?
 
 const occasionToWork = computed(() => (props.occasionToEdit
   ? { ...props.occasionToEdit }
-  : createNewOccasion()));
+  : createNewOccasion.value));
+
 
 const occasion = ref(occasionToWork);
 
@@ -92,7 +92,6 @@ async function submit() {
   visible.value = false;
 }
 </script>
-
 <style lang="scss">
 @import 'vue3-emoji-picker/css';
 @import '@/assets/scss/blocks/occasion-creator.scss';
