@@ -29,7 +29,6 @@
   </div>
 
 </template>
-
 <script setup>
 import { ref, computed } from 'vue';
 import useOccasionsStore from '@/stores/occasions';
@@ -72,8 +71,7 @@ const occasionToWork = computed(() => (props.occasionToEdit
   ? { ...props.occasionToEdit }
   : createNewOccasion()));
 
-const occasion = ref(occasionToWork);
-
+const occasion = ref(occasionToWork.value); // FIX  вы прото теряет тут реактивность
 const modalHeader = computed(() => (props.occasionToEdit ? 'Редактировать событие' : 'Новое событие'));
 
 function onSelectEmoji(emoji) {
@@ -92,7 +90,6 @@ async function submit() {
   visible.value = false;
 }
 </script>
-
 <style lang="scss">
 @import 'vue3-emoji-picker/css';
 @import '@/assets/scss/blocks/occasion-creator.scss';
