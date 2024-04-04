@@ -4,6 +4,8 @@
 
 Ссылка на [техзадание](https://docs.google.com/document/d/14AtQS2BN49k68sdFNe2zLWemVrYOitW-8en76a_MS2M/edit).
 
+Ссылка на [демо](https://paulinekorkina.github.io/how-are-you/).
+
 ## Дорожная карта
 
 - [x] Создание и первичная настройка проекта, написание ТЗ
