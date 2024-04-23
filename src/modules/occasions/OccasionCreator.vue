@@ -62,15 +62,15 @@ const visible = computed({
 
 const occasionsStore = useOccasionsStore();
 
-const createNewOccasion = () => ({
+const createNewOccasion = ref({
   id: crypto.randomUUID(),
   name: '',
   icon: '',
 });
 
 const occasionToWork = computed(() => (props.occasionToEdit
-  ? { ...props.occasionToEdit }
-  : createNewOccasion()));
+  ? props.occasionToEdit
+  : createNewOccasion.value));
 
 const occasion = ref(occasionToWork);
 
@@ -83,10 +83,10 @@ function onSelectEmoji(emoji) {
 async function submit() {
   if (props.occasionToEdit) {
     // редактируемое событие
-    await occasionsStore.updateOccasion(occasion.value);
+    await occasionsStore.updateOccasion({ ...occasion.value });
   } else {
     // новое событие
-    await occasionsStore.addOccasion(occasion.value);
+    await occasionsStore.addOccasion({ ...occasion.value });
   }
 
   visible.value = false;
