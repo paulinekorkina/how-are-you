@@ -7,7 +7,7 @@ const useOccasionStore = defineStore('occasion', {
   }),
   actions: {
     addOccasion(occasion) {
-      this.occasions.push(occasion);
+      this.occasions.unshift(occasion);
     },
     updateOccasion(occasion) {
       const index = this.occasions.findIndex(({ id }) => id === occasion.id);

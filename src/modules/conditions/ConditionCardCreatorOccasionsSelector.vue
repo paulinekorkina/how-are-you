@@ -13,14 +13,14 @@
       <template #option="slotProps">
         {{ slotProps.option.icon }} {{ slotProps.option.name }}
         <span
-          @click.stop.prevent="editOccasion(slotProps.option)"
+          @click.stop.prevent="openOccasionEditor(slotProps.option)"
           class="occasion-edit-icon pi pi-pencil ml-auto"
         ></span>
       </template>
       <template #footer>
         <div class="py-2 px-3">
           <Button
-            @click="addOccasion"
+            @click="openOccasionCreator"
             label="Создать событие"
             link
           />
@@ -37,7 +37,12 @@
       />
     </div>
 
-    <occasion-creator :occasion-to-edit="occasionToEdit" v-model="visible" />
+    <occasion-creator
+      @select-new-occasion="selectNewOccasion"
+      @update-occasion="updateOccasion"
+      :occasion-to-edit="occasionToEdit"
+      v-model="visible"
+    />
   </div>
 </template>
 
@@ -69,21 +74,33 @@ const occasionsSelected = computed({
   },
 });
 
-const visible = ref(true);
+const visible = ref(false);
 const occasionToEdit = ref(null);
 
 function removeOccasion(occasionId) {
   occasionsSelected.value = occasionsSelected.value.filter(({ id }) => id !== occasionId);
 }
 
-function editOccasion(occasion) {
+function openOccasionEditor(occasion) {
   occasionToEdit.value = { ...occasion };
   visible.value = true;
 }
 
-function addOccasion() {
+function openOccasionCreator() {
   occasionToEdit.value = null;
   visible.value = true;
+}
+
+function selectNewOccasion(newOccasion) {
+  occasionsSelected.value.push(newOccasion);
+}
+
+function updateOccasion(updatedOccasion) {
+  const index = occasionsSelected.value.findIndex(({ id }) => id === updatedOccasion.id);
+
+  if (index >= 0) {
+    occasionsSelected.value.splice(index, 1, updatedOccasion);
+  }
 }
 </script>
 

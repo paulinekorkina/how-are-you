@@ -4,7 +4,13 @@
       <form @submit.prevent="submit">
         <div class="flex align-items-center gap-3 mb-3">
           <label for="name" class="font-semibold w-6rem">Название</label>
-          <InputText v-model="occasion.name" id="name" class="flex-auto" autocomplete="off" />
+          <InputText
+            v-model="occasion.name"
+            id="name"
+            class="flex-auto"
+            autocomplete="off"
+            maxlength="30"
+          />
         </div>
         <div class="occasion-creator-icon flex align-items-center gap-3 mb-5">
           <label class="font-semibold w-6rem">Иконка</label>
@@ -49,7 +55,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(['update:modelValue']);
+const emit = defineEmits(['update:modelValue', 'selectNewOccasion', 'updateOccasion']);
 
 const visible = computed({
   get() {
@@ -62,15 +68,17 @@ const visible = computed({
 
 const occasionsStore = useOccasionsStore();
 
-const createNewOccasion = ref({
+const createNewOccasion = () => ({
   id: crypto.randomUUID(),
   name: '',
   icon: '',
 });
 
+const newOccasion = ref(createNewOccasion());
+
 const occasionToWork = computed(() => (props.occasionToEdit
   ? props.occasionToEdit
-  : createNewOccasion.value));
+  : newOccasion.value));
 
 const occasion = ref(occasionToWork);
 
@@ -84,9 +92,12 @@ async function submit() {
   if (props.occasionToEdit) {
     // редактируемое событие
     await occasionsStore.updateOccasion({ ...occasion.value });
+    emit('updateOccasion', occasion.value);
   } else {
     // новое событие
     await occasionsStore.addOccasion({ ...occasion.value });
+    emit('selectNewOccasion', occasion.value);
+    newOccasion.value = createNewOccasion();
   }
 
   visible.value = false;
