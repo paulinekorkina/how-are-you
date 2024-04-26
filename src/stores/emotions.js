@@ -7,7 +7,7 @@ const useEmotionStore = defineStore('emotion', {
   }),
   actions: {
     addEmotion(emotion) {
-      this.emotion.push(emotion);
+      this.emotions.unshift(emotion);
     },
     updateEmotion(emotion) {
       const index = this.emotions.findIndex(({ id }) => id === emotion.id);

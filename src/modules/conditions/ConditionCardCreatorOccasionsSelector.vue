@@ -2,7 +2,7 @@
   <div>
     <MultiSelect
       v-model="occasionsSelected"
-      :options="occasionsStore.occasions"
+      :options="occasionsShown"
       filter
       optionLabel="name"
       placeholder="Выберите события"
@@ -14,7 +14,11 @@
         {{ slotProps.option.icon }} {{ slotProps.option.name }}
         <span
           @click.stop.prevent="openOccasionEditor(slotProps.option)"
-          class="occasion-edit-icon pi pi-pencil ml-auto"
+          class="edit-icon pi pi-pencil ml-auto"
+        ></span>
+        <span
+          @click.stop.prevent="confirmArchive(slotProps.option.id)"
+          class="archive-icon pi pi-trash ml-2"
         ></span>
       </template>
       <template #footer>
@@ -48,9 +52,10 @@
 
 <script setup>
 import { ref, computed } from 'vue';
+import { useConfirm } from 'primevue/useconfirm';
+import useOccasionsStore from '@/stores/occasions';
 import Chip from 'primevue/chip';
 import Button from 'primevue/button';
-import useOccasionsStore from '@/stores/occasions';
 import MultiSelect from 'primevue/multiselect';
 import OccasionCreator from '@/modules/occasions/OccasionCreator.vue';
 
@@ -65,6 +70,8 @@ const emit = defineEmits(['update:modelValue']);
 
 const occasionsStore = useOccasionsStore();
 
+const confirm = useConfirm();
+
 const occasionsSelected = computed({
   get() {
     return props.modelValue;
@@ -73,6 +80,10 @@ const occasionsSelected = computed({
     emit('update:modelValue', value);
   },
 });
+
+const occasionsShown = computed(() => occasionsStore.occasions
+  .filter((item) => !item.archive || occasionsSelected.value
+    .find(({ id }) => id === item.id)));
 
 const visible = ref(false);
 const occasionToEdit = ref(null);
@@ -102,8 +113,27 @@ function updateOccasion(updatedOccasion) {
     occasionsSelected.value.splice(index, 1, updatedOccasion);
   }
 }
+
+async function archiveOccasion(occasionId) {
+  await occasionsStore.archiveOccasion(occasionId);
+  occasionsSelected.value = occasionsSelected.value.filter(({ id }) => id !== occasionId);
+}
+
+function confirmArchive(occasionId) {
+  confirm.require({
+    message: 'Удалить событие?',
+    header: 'Подтверждение',
+    rejectClass: 'p-button-secondary p-button-outlined',
+    rejectLabel: 'Отмена',
+    acceptClass: 'ml-3',
+    acceptLabel: 'Удалить',
+    accept: () => {
+      archiveOccasion(occasionId);
+    },
+  });
+}
 </script>
 
 <style lang="scss" scoped>
-@import '@/assets/scss/blocks/occasions-selector.scss';
+@import '@/assets/scss/blocks/occasions-and-emotions-selector.scss';
 </style>

@@ -5,7 +5,7 @@
         <div class="flex align-items-center gap-3 mb-3">
           <label for="name" class="font-semibold w-6rem">Название</label>
           <InputText
-            v-model="occasion.name"
+            v-model="emotion.name"
             id="name"
             class="flex-auto"
             autocomplete="off"
@@ -14,7 +14,7 @@
         </div>
         <div class="creator-icon flex align-items-center gap-3 mb-5">
           <label class="font-semibold w-6rem">Иконка</label>
-          <div class="flex-auto">{{ occasion.icon }}</div>
+          <div class="flex-auto">{{ emotion.icon }}</div>
         </div>
         <EmojiPicker
           :native="true"
@@ -37,14 +37,14 @@
 
 <script setup>
 import { ref, computed } from 'vue';
-import useOccasionsStore from '@/stores/occasions';
+import useEmotionsStore from '@/stores/emotions';
 import Dialog from 'primevue/dialog';
 import Button from 'primevue/button';
 import InputText from 'primevue/inputtext';
 import EmojiPicker from 'vue3-emoji-picker';
 
 const props = defineProps({
-  occasionToEdit: {
+  emotionToEdit: {
     type: Object,
     default: null,
   },
@@ -54,7 +54,7 @@ const props = defineProps({
   },
 });
 
-const emit = defineEmits(['update:modelValue', 'selectNewOccasion', 'updateOccasion']);
+const emit = defineEmits(['update:modelValue', 'selectNewEmotion', 'updateEmotion']);
 
 const visible = computed({
   get() {
@@ -65,41 +65,41 @@ const visible = computed({
   },
 });
 
-const occasionsStore = useOccasionsStore();
+const emotionsStore = useEmotionsStore();
 
-const createNewOccasion = () => ({
+const createNewEmotion = () => ({
   id: crypto.randomUUID(),
   name: '',
   icon: '',
   archive: false,
 });
 
-const newOccasion = ref(createNewOccasion());
+const newEmotion = ref(createNewEmotion());
 
-const occasionToWork = computed(() => (props.occasionToEdit
-  ? props.occasionToEdit
-  : newOccasion.value));
+const emotionToWork = computed(() => (props.emotionToEdit
+  ? props.emotionToEdit
+  : newEmotion.value));
 
-const occasion = ref(occasionToWork);
+const emotion = ref(emotionToWork);
 
-const modalHeader = computed(() => (props.occasionToEdit ? 'Редактировать событие' : 'Новое событие'));
+const modalHeader = computed(() => (props.emotionToEdit ? 'Редактировать эмоцию' : 'Новая эмоция'));
 
-const submitDisabled = computed(() => !occasion.value.name || !occasion.value.icon);
+const submitDisabled = computed(() => !emotion.value.name || !emotion.value.icon);
 
 function onSelectEmoji(emoji) {
-  occasion.value.icon = emoji.i;
+  emotion.value.icon = emoji.i;
 }
 
 async function submit() {
-  if (props.occasionToEdit) {
-    // редактируемое событие
-    await occasionsStore.updateOccasion({ ...occasion.value });
-    emit('updateOccasion', occasion.value);
+  if (props.emotionToEdit) {
+    // редактируемая эмоция
+    await emotionsStore.updateEmotion({ ...emotion.value });
+    emit('updateEmotion', emotion.value);
   } else {
-    // новое событие
-    await occasionsStore.addOccasion({ ...occasion.value });
-    emit('selectNewOccasion', occasion.value);
-    newOccasion.value = createNewOccasion();
+    // новая эмоция
+    await emotionsStore.addEmotion({ ...emotion.value });
+    emit('selectNewEmotion', emotion.value);
+    newEmotion.value = createNewEmotion();
   }
 
   visible.value = false;

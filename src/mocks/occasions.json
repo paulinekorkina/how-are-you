@@ -2,71 +2,85 @@
   {
     "id": 0,
     "name": "Чтение",
-    "icon": "📖"
+    "icon": "📖",
+    "archive": false
   },
   {
     "id": 1,
     "name": "Тренировка",
-    "icon": "💪"
+    "icon": "💪",
+    "archive": true
   },
   {
     "id": 2,
     "name": "Работа",
-    "icon": "💻"
+    "icon": "💻",
+    "archive": false
   },
   {
     "id": 3,
     "name": "Семья",
-    "icon": "👨‍👩‍👧"
+    "icon": "👨‍👩‍👧",
+    "archive": false
   },
   {
     "id": 4,
     "name": "Сериал",
-    "icon": "🎞️"
+    "icon": "🎞️",
+    "archive": false
   },
   {
     "id": 5,
     "name": "Видеоигры",
-    "icon": "🎮"
+    "icon": "🎮",
+    "archive": false
   },
   {
     "id": 6,
     "name": "Магазин",
-    "icon": "🛍️"
+    "icon": "🛍️",
+    "archive": false
   },
   {
     "id": 7,
     "name": "Соцсети",
-    "icon": "📱"
+    "icon": "📱",
+    "archive": false
   },
   {
     "id": 8,
     "name": "Уход за собой",
-    "icon": "🛁"
+    "icon": "🛁",
+    "archive": false
   },
   {
     "id": 9,
     "name": "Тусовка",
-    "icon": "🎉"
+    "icon": "🎉",
+    "archive": false
   },
   {
     "id": 10,
     "name": "Свидание",
-    "icon": "💐"
+    "icon": "💐",
+    "archive": false
   },
   {
     "id": 11,
     "name": "Прогулка",
-    "icon": "🚶"
+    "icon": "🚶",
+    "archive": false
   },
   {
     "id": 12,
     "name": "Домашние дела",
-    "icon": "🧼"
+    "icon": "🧼",
+    "archive": false
   },
   {
     "id": 13,
     "name": "Учеба",
-    "icon": "👩‍🎓"
+    "icon": "👩‍🎓",
+    "archive": false
   }
 ]

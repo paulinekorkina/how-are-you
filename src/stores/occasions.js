@@ -16,8 +16,12 @@ const useOccasionStore = defineStore('occasion', {
         this.occasions.splice(index, 1, occasion);
       }
     },
-    deleteOccasion(occasionId) {
-      this.occasions = this.occasions.filter(({ id }) => id !== occasionId);
+    archiveOccasion(occasionId) {
+      const index = this.occasions.findIndex(({ id }) => id === occasionId);
+
+      if (index >= 0) {
+        this.occasions[index].archive = true;
+      }
     },
   },
 });

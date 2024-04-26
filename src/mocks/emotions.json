@@ -2,51 +2,61 @@
   {
     "id": 0,
     "name": "Радость",
-    "icon": "😄"
+    "icon": "😄",
+    "archive": false
   },
   {
     "id": 1,
     "name": "Гармония",
-    "icon": "💖"
+    "icon": "💖",
+    "archive": false
   },
   {
     "id": 2,
     "name": "Удовлетворение",
-    "icon": "😊"
+    "icon": "😊",
+    "archive": false
   },
   {
     "id": 3,
     "name": "Удивление",
-    "icon": "😯"
+    "icon": "😯",
+    "archive": false
   },
   {
     "id": 4,
     "name": "Апатия",
-    "icon": "😑"
+    "icon": "😑",
+    "archive": false
   },
   {
     "id": 5,
     "name": "Тревога",
-    "icon": "😱"
+    "icon": "😱",
+    "archive": false
   },
   {
     "id": 6,
     "name": "Раздражение",
-    "icon": "😤"
+    "icon": "😤",
+    "archive": false
   },
   {
     "id": 7,
     "name": "Печаль",
-    "icon": "😞"
+    "icon": "😞",
+    "archive": false
   },
   {
     "id": 8,
     "name": "Уныние",
-    "icon": "☹️"
+    "icon": "☹️",
+    "archive": false
   },
   {
     "id": 9,
     "name": "Злость",
-    "icon": "😡"
+    "icon": "😡",
+    "archive": false
   }
 ]
