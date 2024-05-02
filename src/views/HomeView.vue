@@ -1,4 +1,6 @@
 <template>
+  <FiltersBlock />
+
   <div class="grid">
     <router-link
       :to="{ name: 'condition', params: { id: condition.id }}"
@@ -21,6 +23,7 @@
 <script setup>
 import useConditionsStore from '@/stores/conditions';
 import ConditionCard from '@/modules/conditions/ConditionCard.vue';
+import FiltersBlock from '@/modules/filters/FiltersBlock.vue';
 
 const conditionsStore = useConditionsStore();
 </script>

@@ -2,11 +2,16 @@
 
 .mood-selector {
   &-label {
-    display: flex;
+    position: relative;
+    display: inline-flex;
     align-items: center;
+    padding-left: 25px;
 
     &::before {
       content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
       display: inline-block;
       width: 20px;
       height: 20px;
