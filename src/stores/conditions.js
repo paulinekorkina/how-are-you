@@ -70,9 +70,17 @@ const useConditionsStore = defineStore('conditions', {
       const occasionsFilter = (condition) => filtersStore.filters.occasions
         .some((occasion) => condition.occasions?.includes(occasion.id));
 
+      const emotionsFilter = (condition) => filtersStore.filters.emotions
+        .some((emotion) => condition.emotions?.includes(emotion.id));
+
       const moodFilter = (condition) => {
         const [min, max] = filtersStore.filters.mood;
         return min <= condition.mood && condition.mood <= max;
+      };
+
+      const energyFilter = (condition) => {
+        const [min, max] = filtersStore.filters.energy;
+        return min <= condition.energy && condition.energy <= max;
       };
 
       return state.conditions.filter((condition) => {
@@ -80,7 +88,9 @@ const useConditionsStore = defineStore('conditions', {
           dateFrom: dateFromFilter,
           dateTo: dateToFilter,
           occasions: occasionsFilter,
+          emotions: emotionsFilter,
           mood: moodFilter,
+          energy: energyFilter,
         };
 
         return Object.entries(result)

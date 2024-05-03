@@ -5,25 +5,27 @@ const useFiltersStore = defineStore('filters', {
     dateFrom: null,
     dateTo: null,
     mood: [],
+    energy: [],
     occasions: [],
+    emotions: [],
   }),
   getters: {
     filters: (state) => {
       const {
-        dateFrom, dateTo, mood, occasions,
+        dateFrom, dateTo, mood, energy, occasions, emotions,
       } = state;
       return {
         dateFrom,
         dateTo,
         mood,
+        energy,
         occasions,
+        emotions,
       };
     },
   },
   actions: {
     applyFilters({ item, entity }) {
-      // console.log(item, entity);
-      // this[entity] = item;
       this.$patch({ [entity]: item });
     },
     resetFilters() {

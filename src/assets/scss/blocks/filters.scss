@@ -1,0 +1,43 @@
+.filters {
+  &-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 20px;
+  }
+
+
+  &-occasions,
+  &-emotions {
+    flex: 1 1 auto;
+
+    :deep(.p-multiselect) {
+      width: 100%;
+    }
+  }
+
+  &-mood,
+  &-energy {
+    flex: 1 0 0;
+  }
+
+  &-mood {
+    padding-right: 20px;
+  }
+
+  &-energy {
+    padding-left: 20px;
+  }
+
+
+  @media (min-width: 992px) {
+    $areas: dates, occasions, emotions, reset, mood, energy;
+
+    @each $area in $areas {
+      $i: index($areas, $area);
+      &-#{$area} {
+        order: $i;
+      }
+    }
+  }
+}

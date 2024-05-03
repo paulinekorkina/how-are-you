@@ -17,7 +17,6 @@
       range
       :min="0"
       :max="6"
-      class="w-14rem"
     />
   </div>
 

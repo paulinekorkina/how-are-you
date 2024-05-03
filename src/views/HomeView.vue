@@ -1,6 +1,6 @@
 <template>
+  <h1>История состояний</h1>
   <FiltersBlock />
-
   <div class="grid">
     <router-link
       :to="{ name: 'condition', params: { id: condition.id }}"

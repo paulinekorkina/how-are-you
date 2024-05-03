@@ -1,11 +1,11 @@
 <template>
   <div>
     <MultiSelect
-      v-model="occasionsSelected"
-      :options="occasionsStore.occasions"
+      v-model="emotionsSelected"
+      :options="emotionsStore.emotions"
       filter
       optionLabel="name"
-      placeholder="События"
+      placeholder="Эмоции"
       :maxSelectedLabels="0"
       selectedItemsLabel="Выбрано: {0}"
     >
@@ -18,19 +18,19 @@
 
 <script setup>
 import { computed } from 'vue';
-import useOccasionsStore from '@/stores/occasions';
+import useEmotionsStore from '@/stores/emotions';
 import useFiltersStore from '@/stores/filters';
 import MultiSelect from 'primevue/multiselect';
 
-const occasionsStore = useOccasionsStore();
+const emotionsStore = useEmotionsStore();
 const filtersStore = useFiltersStore();
 
-const occasionsSelected = computed({
+const emotionsSelected = computed({
   get() {
-    return filtersStore.occasions;
+    return filtersStore.emotions;
   },
   set(value) {
-    filtersStore.applyFilters({ item: value, entity: 'occasions' });
+    filtersStore.applyFilters({ item: value, entity: 'emotions' });
   },
 });
 </script>

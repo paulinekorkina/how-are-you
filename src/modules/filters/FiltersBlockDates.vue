@@ -5,7 +5,7 @@
       v-model="dateFrom"
       showTime
       iconDisplay="input"
-      dateFormat="dd M yy"
+      dateFormat="dd.mm.y"
       class="mr-2"
     />
     <span class="mr-2">по</span>
@@ -13,7 +13,7 @@
       v-model="dateTo"
       showTime
       iconDisplay="input"
-      dateFormat="dd M yy"
+      dateFormat="dd.mm.y"
     />
   </div>
 </template>
@@ -49,6 +49,6 @@ const dateTo = computed({
 
 <style lang="scss" scoped>
 :deep(.p-calendar .p-inputtext) {
-  width: 175px;
+  width: 140px;
 }
 </style>
