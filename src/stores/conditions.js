@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import conditionsJSON from '@/mocks/conditions.json';
+import mockConditions from '@/mocks/conditions';
 
 import useOccasionsStore from '@/stores/occasions';
 import useEmotionsStore from '@/stores/emotions';
@@ -29,7 +29,7 @@ function getEmotionsByIds(ids) {
 
 const useConditionsStore = defineStore('conditions', {
   state: () => ({
-    conditions: conditionsJSON,
+    conditions: mockConditions,
   }),
   getters: {
     conditionsExtended: (state) => state.filteredConditions
