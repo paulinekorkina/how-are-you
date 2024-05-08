@@ -1,19 +1,30 @@
 <template>
-  <router-link
-    :to="{ name: 'condition', params: { id: condition.id }}"
-    class="report-card shadow-2 mb-2 p-3 border-round flex-wrap col-12 gap-2"
-    v-for="condition in conditionsStore.conditionsExtended"
-    :key="condition.id"
-  >
-    <report-block-card :condition="condition" />
-  </router-link>
+  <div class="report-block">
+    <router-link
+      :to="{ name: 'condition', params: { id: condition.id }}"
+      class="report-card shadow-2 mb-2 p-3 border-round flex-wrap col-12 gap-2"
+      v-for="condition in conditionsToRender"
+      :key="condition.id"
+    >
+      <ReportBlockCard :condition="condition" />
+    </router-link>
+  </div>
+
+  <div
+      v-if="conditionsToRender.length === 0"
+      class="col-12 mt-5 text-lg text-center"
+    >Список состояний пуст. Добавьте первое!</div>
+
+  <div v-if="isMoreConditions">
+    <div ref="target" class="text-center p-3">Загрузка...</div>
+  </div>
 </template>
 
 <script setup>
-import useConditionsStore from '@/stores/conditions';
+import useConditionsPagination from '@/composables/useConditionsPagination';
 import ReportBlockCard from './ReportBlockCard.vue';
 
-const conditionsStore = useConditionsStore();
+const { conditionsToRender, isMoreConditions, target } = useConditionsPagination();
 </script>
 
 <style lang="scss" scoped>

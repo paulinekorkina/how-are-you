@@ -14,7 +14,7 @@
     </router-link>
 
     <div
-      v-if="conditionsStore.conditions.length === 0"
+      v-if="conditionsToRender.length === 0"
       class="col-12 mt-5 text-lg text-center"
     >Список состояний пуст. Добавьте первое!</div>
 
@@ -27,41 +27,10 @@
 </template>
 
 <script setup>
-import { ref, computed, watch } from 'vue';
-import { storeToRefs } from 'pinia';
-import useConditionsStore from '@/stores/conditions';
 import ConditionCard from '@/modules/conditions/ConditionCard.vue';
 import FiltersBlock from '@/modules/filters/FiltersBlock.vue';
-import { useIntersectionObserver } from '@vueuse/core';
+import useConditionsPagination from '@/composables/useConditionsPagination';
 
-const conditionsStore = useConditionsStore();
-
-const conditionsCountPerStep = 8;
-const renderedConditionsCount = ref(conditionsCountPerStep);
-const target = ref(null);
-
-const { conditionsExtended: conditions } = storeToRefs(conditionsStore);
-
-const conditionsToRender = computed(() => conditions.value
-  .slice(0, Math.min(conditions.value.length, renderedConditionsCount.value)));
-
-const isMoreConditions = computed(() => conditions.value.length > renderedConditionsCount.value);
-
-const loadMoreConditions = () => {
-  renderedConditionsCount.value += conditionsCountPerStep;
-};
-
-watch(conditions, () => {
-  renderedConditionsCount.value = conditionsCountPerStep;
-});
-
-useIntersectionObserver(
-  target,
-  ([{ isIntersecting }]) => {
-    if (isIntersecting) {
-      loadMoreConditions();
-    }
-  },
-);
+const { conditionsToRender, isMoreConditions, target } = useConditionsPagination();
 
 </script>

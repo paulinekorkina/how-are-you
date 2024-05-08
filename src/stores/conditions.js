@@ -115,13 +115,13 @@ const useConditionsStore = defineStore('conditions', {
         date,
       };
     },
-    getMinDate: (state) => state.conditions.reduce(
+    getMinDate: (state) => state.conditions?.reduce(
       (res, condition) => dayjs.min(dayjs(res), dayjs(condition.date)).$d,
-      state.conditions[0].date,
+      state.conditions[0]?.date,
     ),
-    getMaxDate: (state) => state.conditions.reduce(
+    getMaxDate: (state) => state.conditions?.reduce(
       (res, condition) => dayjs.max(dayjs(res), dayjs(condition.date)).$d,
-      state.conditions[0].date,
+      state.conditions[0]?.date,
     ),
   },
   actions: {
