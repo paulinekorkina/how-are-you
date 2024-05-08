@@ -19,7 +19,11 @@
     >Список состояний пуст. Добавьте первое!</div>
 
   </div>
-  <button v-if="isMoreConditions" type="button" @click="loadMoreConditions">load more</button>
+
+  <div v-if="isMoreConditions">
+    <div ref="target" class="text-center p-3">Загрузка...</div>
+  </div>
+
 </template>
 
 <script setup>
@@ -28,11 +32,13 @@ import { storeToRefs } from 'pinia';
 import useConditionsStore from '@/stores/conditions';
 import ConditionCard from '@/modules/conditions/ConditionCard.vue';
 import FiltersBlock from '@/modules/filters/FiltersBlock.vue';
+import { useIntersectionObserver } from '@vueuse/core';
 
 const conditionsStore = useConditionsStore();
 
 const conditionsCountPerStep = 8;
 const renderedConditionsCount = ref(conditionsCountPerStep);
+const target = ref(null);
 
 const { conditionsExtended: conditions } = storeToRefs(conditionsStore);
 
@@ -48,4 +54,14 @@ const loadMoreConditions = () => {
 watch(conditions, () => {
   renderedConditionsCount.value = conditionsCountPerStep;
 });
+
+useIntersectionObserver(
+  target,
+  ([{ isIntersecting }]) => {
+    if (isIntersecting) {
+      loadMoreConditions();
+    }
+  },
+);
+
 </script>
