@@ -1,5 +1,5 @@
 <template>
-  <div class="report-block">
+  <transition-group name="condition" class="report-block" tag="div">
     <router-link
       :to="{ name: 'condition', params: { id: condition.id }}"
       class="report-card shadow-2 mb-2 p-3 border-round flex-wrap col-12 gap-2"
@@ -8,7 +8,7 @@
     >
       <ReportBlockCard :condition="condition" />
     </router-link>
-  </div>
+  </transition-group>
 
   <div
       v-if="conditionsToRender.length === 0"
@@ -29,4 +29,5 @@ const { conditionsToRender, isMoreConditions, target } = useConditionsPagination
 
 <style lang="scss" scoped>
 @import '@/assets/scss/blocks/report-block.scss';
+@import '@/assets/scss/animations/animations.scss';
 </style>

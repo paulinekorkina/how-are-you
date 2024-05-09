@@ -1,7 +1,11 @@
 <template>
   <app-header />
   <main class="main container">
-    <router-view></router-view>
+    <router-view v-slot="{ Component }">
+      <transition name="view" mode="out-in">
+        <component :is="Component" />
+      </transition>
+    </router-view>
   </main>
   <ConfirmDialog @click.stop></ConfirmDialog>
 </template>
@@ -13,4 +17,5 @@ import ConfirmDialog from 'primevue/confirmdialog';
 
 <style lang="scss">
 @import '@/assets/scss/app.scss';
+@import '@/assets/scss/animations/animations.scss';
 </style>

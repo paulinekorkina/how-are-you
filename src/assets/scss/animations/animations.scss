@@ -1,0 +1,31 @@
+.condition-enter-active,
+.condition-leave-active {
+  transition: all 0.5s ease;
+}
+
+.condition-enter-from,
+.condition-leave-to {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.view-enter-active,
+.view-leave-active {
+  transition: all .25s ease-in-out;
+}
+
+.view-enter-from {
+  opacity: 0;
+  transform: translateX(25%);
+}
+
+.view-leave-to {
+  opacity: 0;
+  transform: translateX(-25%);
+}
+
+.view-enter-to,
+.view-leave-from {
+  opacity: 1;
+  transform: translateX(0);
+}
