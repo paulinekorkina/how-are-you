@@ -6,6 +6,9 @@ import * as path from 'path';
 export default defineConfig({
   base: '/how-are-you/',
   plugins: [vue()],
+  test: {
+    environment: 'jsdom',
+  },
   resolve: {
     alias: {
       /* Указываем символ "@" как псевдоним для пути к директории "./src" */
