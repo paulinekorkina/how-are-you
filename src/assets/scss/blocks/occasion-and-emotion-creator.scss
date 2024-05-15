@@ -1,5 +1,15 @@
-.occasion-creator {
-  &-icon {
+.occasion-and-emotion {
+  &-form-fields {
+    display: grid;
+    align-items: baseline;
+    row-gap: 10px;
     min-height: 30px;
+    margin-bottom: 40px;
+
+    @media (min-width: 576px) {
+      grid-template-areas: "a b" "c d";
+      grid-template-columns: min-content auto;
+      gap: 20px 10px;
+    }
   }
 }

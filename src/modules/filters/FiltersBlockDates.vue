@@ -1,14 +1,13 @@
 <template>
   <div>
-    <span class="mr-2">С</span>
+    <span>С</span>
     <Calendar
       v-model="dateFrom"
       showTime
       iconDisplay="input"
       dateFormat="dd.mm.y"
-      class="mr-2"
     />
-    <span class="mr-2">по</span>
+    <span>по</span>
     <Calendar
       v-model="dateTo"
       showTime

@@ -2,8 +2,8 @@
   <div>
     <Dialog v-model:visible="visible" modal :header="modalHeader" @click.stop>
       <form @submit.prevent="submit">
-        <div class="flex align-items-center gap-3 mb-3">
-          <label for="name" class="font-semibold w-6rem">Название</label>
+        <div class="occasion-and-emotion-form-fields">
+          <label for="name">Название</label>
           <InputText
             v-model="emotion.name"
             id="name"
@@ -11,9 +11,7 @@
             autocomplete="off"
             maxlength="30"
           />
-        </div>
-        <div class="creator-icon flex align-items-center gap-3 mb-5">
-          <label class="font-semibold w-6rem">Иконка</label>
+          <label>Иконка</label>
           <div class="flex-auto">{{ emotion.icon }}</div>
         </div>
         <EmojiPicker

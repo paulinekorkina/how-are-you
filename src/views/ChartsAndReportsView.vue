@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex flex-column">
     <h1>Графики и отчеты</h1>
     <FiltersBlock />
     <ChartBlock class="mb-5" />

@@ -1,16 +1,16 @@
 <template>
   <div class="mb-5">
-    <p>
+    <p class="flex gap-1">
       Настроение от:
       <span
         :class="MoodClass[mood[0]]"
         class="mood-selector-label"
-      >{{ MoodName[mood[0]] }},</span>
+      >{{ moodFromText }}</span>
       до:
       <span
         :class="MoodClass[mood[1]]"
         class="mood-selector-label"
-      >{{ MoodName[mood[1]] }}</span>
+      >{{ moodToText }}</span>
     </p>
     <Slider
       v-model="mood"
@@ -27,6 +27,7 @@ import { computed } from 'vue';
 import useFiltersStore from '@/stores/filters';
 import Slider from 'primevue/slider';
 import { MoodClass, MoodName } from '@/common/const';
+import { useMediaQuery } from '@vueuse/core';
 
 const filtersStore = useFiltersStore();
 
@@ -38,6 +39,11 @@ const mood = computed({
     filtersStore.applyFilters({ item: value, entity: 'mood' });
   },
 });
+
+const isLargeScreen = useMediaQuery('(min-width: 992px)');
+
+const moodFromText = computed(() => (isLargeScreen.value ? `${MoodName[mood.value[0]]},` : ''));
+const moodToText = computed(() => (isLargeScreen.value ? MoodName[mood.value[1]] : ''));
 </script>
 
 <style lang="scss" scoped>
