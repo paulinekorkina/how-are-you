@@ -3,16 +3,16 @@
     <span>С</span>
     <Calendar
       v-model="dateFrom"
-      showTime
-      iconDisplay="input"
-      dateFormat="dd.mm.y"
+      show-time
+      icon-display="input"
+      date-format="dd.mm.y"
     />
     <span>по</span>
     <Calendar
       v-model="dateTo"
-      showTime
-      iconDisplay="input"
-      dateFormat="dd.mm.y"
+      show-time
+      icon-display="input"
+      date-format="dd.mm.y"
     />
   </div>
 </template>

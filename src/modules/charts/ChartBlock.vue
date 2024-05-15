@@ -1,5 +1,9 @@
 <template>
-  <Chart type="line" :data="chartData" :options="chartOptions" />
+  <Chart
+    type="line"
+    :data="chartData"
+    :options="chartOptions"
+  />
 </template>
 
 <script setup>

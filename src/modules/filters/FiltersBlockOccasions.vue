@@ -4,10 +4,10 @@
       v-model="occasionsSelected"
       :options="occasionsStore.occasions"
       filter
-      optionLabel="name"
+      option-label="name"
       placeholder="События"
-      :maxSelectedLabels="0"
-      selectedItemsLabel="Выбрано: {0}"
+      :max-selected-labels="0"
+      selected-items-label="Выбрано: {0}"
     >
       <template #option="slotProps">
         {{ slotProps.option.icon }} {{ slotProps.option.name }}

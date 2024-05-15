@@ -30,6 +30,23 @@ const EnergyName = {
 
 const MAX_NOTE_LENGTH = 120;
 
+const emojiPickerAttrs = {
+  native: true,
+  'display-recent': true,
+  'static-texts': { placeholder: 'Поиск эмодзи', skinTone: 'Оттенок кожи' },
+  'group-names': {
+    recent: 'Недавно использованные',
+    smileys_people: 'Смайлы и лица',
+    animals_nature: 'Природа и животные',
+    food_drink: 'Еда и напитки',
+    activities: 'Деятельность',
+    travel_places: 'Путешествия',
+    objects: 'Объекты',
+    symbols: 'Символы',
+    flags: 'Флаги',
+  },
+};
+
 export {
-  MoodClass, MoodName, EnergyName, MAX_NOTE_LENGTH,
+  MoodClass, MoodName, EnergyName, MAX_NOTE_LENGTH, emojiPickerAttrs,
 };

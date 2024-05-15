@@ -1,10 +1,11 @@
 <template>
   <div class="condition-card">
     <Button
-      @click.stop.prevent="deleteCondition"
       icon="pi pi-trash"
       severity="secondary"
-      text size="small"
+      text
+      size="small"
+      @click.stop.prevent="deleteCondition"
     />
 
     <div
@@ -29,25 +30,30 @@
       class="flex flex-wrap gap-2"
     >
       <span
-        :key="occasion.id"
         v-for="occasion in condition.occasions"
+        :key="occasion.id"
         class="text-xs"
       >{{ occasion.icon }} {{ occasion.name }}</span>
     </div>
 
-    <Divider v-if="condition.occasions.length && condition.emotions.length"/>
+    <Divider v-if="condition.occasions.length && condition.emotions.length" />
 
-    <div v-if="condition.emotions.length" class="flex flex-wrap gap-2">
+    <div
+      v-if="condition.emotions.length"
+      class="flex flex-wrap gap-2"
+    >
       <span
-        :key="emotion.id"
         v-for="emotion in condition.emotions"
+        :key="emotion.id"
         class="text-xs"
       >{{ emotion.icon }} {{ emotion.name }}</span>
     </div>
 
     <div v-if="condition.trimmedNote">
-      <Divider/>
-      <p class="text-xs">{{ condition.trimmedNote }}</p>
+      <Divider />
+      <p class="text-xs">
+        {{ condition.trimmedNote }}
+      </p>
     </div>
   </div>
 </template>

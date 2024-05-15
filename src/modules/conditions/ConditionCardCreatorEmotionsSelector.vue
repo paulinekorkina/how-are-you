@@ -4,34 +4,37 @@
       v-model="emotionsSelected"
       :options="emotionsShown"
       filter
-      optionLabel="name"
+      option-label="name"
       placeholder="Выберите эмоции"
       class="w-full md:w-20rem"
-      :maxSelectedLabels="0"
-      selectedItemsLabel="Выбрано: {0}"
+      :max-selected-labels="0"
+      selected-items-label="Выбрано: {0}"
     >
       <template #option="slotProps">
         {{ slotProps.option.icon }} {{ slotProps.option.name }}
         <span
-          @click.stop.prevent="openEmotionEditor(slotProps.option)"
           class="edit-icon pi pi-pencil ml-auto"
-        ></span>
+          @click.stop.prevent="openEmotionEditor(slotProps.option)"
+        />
         <span
-          @click.stop.prevent="confirmArchive(slotProps.option.id)"
           class="archive-icon pi pi-trash ml-2"
-        ></span>
+          @click.stop.prevent="confirmArchive(slotProps.option.id)"
+        />
       </template>
       <template #footer>
         <div class="py-2 px-3">
           <Button
-            @click="openEmotionCreator"
             label="Создать эмоцию"
             link
+            @click="openEmotionCreator"
           />
         </div>
       </template>
     </MultiSelect>
-    <div v-if="emotionsSelected?.length" class="flex flex-wrap gap-2 mt-3">
+    <div
+      v-if="emotionsSelected?.length"
+      class="flex flex-wrap gap-2 mt-3"
+    >
       <Chip
         v-for="emotion in emotionsSelected"
         :key="emotion.id"
@@ -41,11 +44,11 @@
       />
     </div>
 
-    <emotion-creator
+    <EmotionCreator
+      v-model="visible"
+      :emotion-to-edit="emotionToEdit"
       @select-new-emotion="selectNewEmotion"
       @update-emotion="updateEmotion"
-      :emotion-to-edit="emotionToEdit"
-      v-model="visible"
     />
   </div>
 </template>

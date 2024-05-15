@@ -10,7 +10,6 @@
       :max="6"
     />
   </div>
-
 </template>
 
 <script setup>

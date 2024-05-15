@@ -1,11 +1,11 @@
 <template>
   <Calendar
     v-model="date"
-    showTime
-    showIcon
-    iconDisplay="input"
-    dateFormat="dd M yy"
-    :maxDate="new Date()"
+    show-time
+    show-icon
+    icon-display="input"
+    date-format="dd M yy"
+    :max-date="new Date()"
   />
 </template>
 

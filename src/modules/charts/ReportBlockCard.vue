@@ -5,10 +5,14 @@
   <div
     class="report-cell report-mood pl-2"
     :class="MoodClass[condition.mood]"
-  >{{ capitalizeFirstLetter(MoodName[condition.mood]) }}</div>
+  >
+    {{ capitalizeFirstLetter(MoodName[condition.mood]) }}
+  </div>
   <div
     class="report-cell"
-  >{{ capitalizeFirstLetter(EnergyName[condition.energy]) }}</div>
+  >
+    {{ capitalizeFirstLetter(EnergyName[condition.energy]) }}
+  </div>
   <div class="report-cell">
     <span
       v-for="occasion in condition.occasions"

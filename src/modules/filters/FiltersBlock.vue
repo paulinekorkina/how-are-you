@@ -6,9 +6,9 @@
     <FiltersBlockMood class="filters-mood" />
     <FiltersBlockEnergy class="filters-energy" />
     <Button
-      @click="filtersStore.resetFilters"
       label="Сбросить"
       class="filters-reset"
+      @click="filtersStore.resetFilters"
     />
   </div>
 </template>

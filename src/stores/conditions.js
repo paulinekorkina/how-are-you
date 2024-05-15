@@ -56,11 +56,6 @@ const useConditionsStore = defineStore('conditions', {
         return state.conditions;
       }
 
-      // const datesFilter = (condition) => {
-      //   const { dateFrom, dateTo } = filtersStore.filters;
-      //   return dayjs(condition.date).isBetween(dateFrom, dateTo, 'minute', '[]');
-      // };
-
       const dateFromFilter = (condition) => dayjs(condition.date)
         .isSameOrAfter(filtersStore.filters.dateFrom, 'minute');
 

@@ -1,23 +1,29 @@
 <template>
   <div>
-    <Dialog v-model:visible="visible" modal :header="modalHeader" @click.stop>
+    <Dialog
+      v-model:visible="visible"
+      modal
+      :header="modalHeader"
+      @click.stop
+    >
       <form @submit.prevent="submit">
         <div class="occasion-and-emotion-form-fields">
           <label for="name">Название</label>
           <InputText
-            v-model="emotion.name"
             id="name"
+            v-model="emotion.name"
             class="flex-auto"
             autocomplete="off"
             maxlength="30"
           />
           <label>Иконка</label>
-          <div class="flex-auto">{{ emotion.icon }}</div>
+          <div class="flex-auto">
+            {{ emotion.icon }}
+          </div>
         </div>
         <EmojiPicker
-          :native="true"
+          v-bind="emojiPickerAttrs"
           @select="onSelectEmoji"
-          :display-recent="true"
         />
         <div class="flex justify-content-end gap-2 mt-5">
           <Button
@@ -25,8 +31,12 @@
             label="Отмена"
             severity="secondary"
             @click="visible = false"
-          ></Button>
-          <Button type="submit" label="Сохранить" :disabled="submitDisabled"></Button>
+          />
+          <Button
+            type="submit"
+            label="Сохранить"
+            :disabled="submitDisabled"
+          />
         </div>
       </form>
     </Dialog>
@@ -40,6 +50,7 @@ import Dialog from 'primevue/dialog';
 import Button from 'primevue/button';
 import InputText from 'primevue/inputtext';
 import EmojiPicker from 'vue3-emoji-picker';
+import { emojiPickerAttrs } from '@/common/const';
 
 const props = defineProps({
   emotionToEdit: {

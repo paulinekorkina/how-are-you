@@ -4,34 +4,37 @@
       v-model="occasionsSelected"
       :options="occasionsShown"
       filter
-      optionLabel="name"
+      option-label="name"
       placeholder="Выберите события"
       class="w-full md:w-20rem"
-      :maxSelectedLabels="0"
-      selectedItemsLabel="Выбрано: {0}"
+      :max-selected-labels="0"
+      selected-items-label="Выбрано: {0}"
     >
       <template #option="slotProps">
         {{ slotProps.option.icon }} {{ slotProps.option.name }}
         <span
-          @click.stop.prevent="openOccasionEditor(slotProps.option)"
           class="edit-icon pi pi-pencil ml-auto"
-        ></span>
+          @click.stop.prevent="openOccasionEditor(slotProps.option)"
+        />
         <span
-          @click.stop.prevent="confirmArchive(slotProps.option.id)"
           class="archive-icon pi pi-trash ml-2"
-        ></span>
+          @click.stop.prevent="confirmArchive(slotProps.option.id)"
+        />
       </template>
       <template #footer>
         <div class="py-2 px-3">
           <Button
-            @click="openOccasionCreator"
             label="Создать событие"
             link
+            @click="openOccasionCreator"
           />
         </div>
       </template>
     </MultiSelect>
-    <div v-if="occasionsSelected?.length" class="flex flex-wrap gap-2 mt-3">
+    <div
+      v-if="occasionsSelected?.length"
+      class="flex flex-wrap gap-2 mt-3"
+    >
       <Chip
         v-for="occasion in occasionsSelected"
         :key="occasion.id"
@@ -41,11 +44,11 @@
       />
     </div>
 
-    <occasion-creator
+    <OccasionCreator
+      v-model="visible"
+      :occasion-to-edit="occasionToEdit"
       @select-new-occasion="selectNewOccasion"
       @update-occasion="updateOccasion"
-      :occasion-to-edit="occasionToEdit"
-      v-model="visible"
     />
   </div>
 </template>

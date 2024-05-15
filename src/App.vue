@@ -2,12 +2,15 @@
   <app-header />
   <main class="main container">
     <router-view v-slot="{ Component }">
-      <transition name="view" mode="out-in">
+      <transition
+        name="view"
+        mode="out-in"
+      >
         <component :is="Component" />
       </transition>
     </router-view>
   </main>
-  <ConfirmDialog @click.stop></ConfirmDialog>
+  <ConfirmDialog @click.stop />
 </template>
 
 <script setup>

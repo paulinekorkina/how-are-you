@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import 'dayjs/locale/ru';
 import isToday from 'dayjs/plugin/isToday';
 import isYesterday from 'dayjs/plugin/isYesterday';
 
@@ -15,7 +16,7 @@ function humanizeShortDate(date) {
     return 'Вчера';
   }
 
-  return dayjs(date).format('D MMM');
+  return dayjs(date).locale('ru').format('D MMM');
 }
 
 function humanizeFullDate(date) {

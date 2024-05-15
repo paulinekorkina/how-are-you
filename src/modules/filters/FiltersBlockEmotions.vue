@@ -4,10 +4,10 @@
       v-model="emotionsSelected"
       :options="emotionsStore.emotions"
       filter
-      optionLabel="name"
+      option-label="name"
       placeholder="Эмоции"
-      :maxSelectedLabels="0"
-      selectedItemsLabel="Выбрано: {0}"
+      :max-selected-labels="0"
+      selected-items-label="Выбрано: {0}"
     >
       <template #option="slotProps">
         {{ slotProps.option.icon }} {{ slotProps.option.name }}

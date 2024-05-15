@@ -1,12 +1,23 @@
 <template>
   <header class="header container flex flex-wrap gap-3">
     <router-link :to="{name: 'home'}">
-      <Button label="История состояний" icon="pi pi-calendar" outlined />
+      <Button
+        label="История состояний"
+        icon="pi pi-calendar"
+        outlined
+      />
     </router-link>
     <router-link :to="{name: 'charts-and-reports'}">
-        <Button label="Графики и отчеты" icon="pi pi-chart-bar" outlined />
+      <Button
+        label="Графики и отчеты"
+        icon="pi pi-chart-bar"
+        outlined
+      />
     </router-link>
-    <router-link :to="{name: 'condition-create'}" class="lg:ml-auto">
+    <router-link
+      :to="{name: 'condition-create'}"
+      class="lg:ml-auto"
+    >
       <Button label="Добавить состояние" />
     </router-link>
   </header>

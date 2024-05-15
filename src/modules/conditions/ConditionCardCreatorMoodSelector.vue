@@ -1,5 +1,10 @@
 <template>
-  <p class="mood-selector-label" :class="MoodClass[mood]">{{ MoodName[mood] }}</p>
+  <p
+    class="mood-selector-label"
+    :class="MoodClass[mood]"
+  >
+    {{ MoodName[mood] }}
+  </p>
   <Slider
     v-model="mood"
     :min="0"

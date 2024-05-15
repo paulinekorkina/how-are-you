@@ -1,5 +1,10 @@
 <template>
-  <Textarea v-model="note" rows="5" cols="30" />
+  <Textarea
+    v-model="note"
+    rows="5"
+    cols="30"
+    maxlength="1000"
+  />
 </template>
 
 <script setup>

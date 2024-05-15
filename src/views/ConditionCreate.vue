@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Новое состояние</h1>
-    <condition-card-creator />
+    <ConditionCardCreator />
   </div>
 </template>
 

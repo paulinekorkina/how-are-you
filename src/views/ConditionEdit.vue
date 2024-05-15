@@ -1,9 +1,10 @@
 <template>
   <div>
     <h1>Изменить состояние</h1>
-    <condition-card-creator
+    <ConditionCardCreator
       :condition-to-edit="condition"
-      @delete-condition="deleteCondition" />
+      @delete-condition="deleteCondition"
+    />
   </div>
 </template>
 
