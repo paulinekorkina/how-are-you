@@ -4,38 +4,45 @@
       <condition-card-creator-date-selector v-model="condition.date" />
     </div>
 
-    <!-- mood slider -->
     <div class="mb-5">
       <p class="font-bold">Настроение</p>
       <condition-card-creator-mood-selector v-model="condition.mood" />
     </div>
 
-    <!-- energy slider -->
     <div class="mb-5">
       <p class="font-bold">Энергия</p>
       <condition-card-creator-energy-selector v-model="condition.energy" />
     </div>
 
-    <!-- occasions -->
     <div class="mb-5">
       <p class="font-bold">События</p>
       <condition-card-creator-occasions-selector v-model="condition.occasions" />
     </div>
 
-    <!-- emotions -->
     <div class="mb-5">
       <p class="font-bold">Эмоции</p>
       <condition-card-creator-emotions-selector v-model="condition.emotions" />
     </div>
 
-    <!-- note -->
     <div class="mb-7">
       <p class="font-bold">Заметка</p>
       <condition-card-creator-note-editor v-model="condition.note" />
     </div>
 
-    <!-- save -->
-    <Button type="submit" label="Сохранить" />
+    <Button type="submit" label="Сохранить" :disabled="!condition.date" />
+
+    <Button
+      v-if="props.conditionToEdit"
+      type="button"
+      @click="$emit('delete-condition')"
+      label="Удалить"
+      outlined
+      class="ml-2"
+    />
+
+    <router-link v-else :to="{name: 'home'}">
+      <Button type="button" label="Отмена" outlined class="ml-2" />
+    </router-link>
   </form>
 </template>
 
@@ -61,6 +68,8 @@ const props = defineProps({
   },
 });
 
+defineEmits(['delete-condition']);
+
 const conditionsStore = useConditionsStore();
 
 const createNewCondition = () => ({
@@ -80,6 +89,8 @@ const conditionToWork = props.conditionToEdit
 const condition = ref(conditionToWork);
 
 async function submit() {
+  if (!condition.value.date) return;
+
   const conditionToSubmit = {
     ...condition.value,
     occasions: condition.value.occasions.map((i) => i.id),

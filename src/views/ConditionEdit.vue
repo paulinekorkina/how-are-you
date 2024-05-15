@@ -1,6 +1,10 @@
 <template>
-  <h1>Изменить состояние</h1>
-  <condition-card-creator :condition-to-edit="condition" />
+  <div>
+    <h1>Изменить состояние</h1>
+    <condition-card-creator
+      :condition-to-edit="condition"
+      @delete-condition="deleteCondition" />
+  </div>
 </template>
 
 <script setup>
@@ -15,6 +19,11 @@ const conditionsStore = useConditionsStore();
 const condition = conditionsStore.getConditionById(route.params.id);
 
 if (!condition) {
+  router.push('/');
+}
+
+function deleteCondition() {
+  conditionsStore.deleteCondition(condition.id);
   router.push('/');
 }
 </script>
